@@ -74,17 +74,17 @@ class TicTacToe
    #odp ? odp : false
    end
 
-   
+
    def full?
      @board.all?{|slot| slot == "X" || slot == "O"}? true : false
    end
 
-   
+
    def draw?
      won? ? false : full? ? true : false
    end
 
-   
+
   def over?
    won? || draw? || full?
  end
