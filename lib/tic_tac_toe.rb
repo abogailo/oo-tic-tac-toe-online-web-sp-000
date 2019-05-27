@@ -38,6 +38,18 @@ class TicTacToe
     @board.count{|token| token == "X" || token == "O"}
   end
 
+  def turn
+    puts "Please enter 1-9:"
+    input = gets.strip
+    index = input_to_index(input)
+    if valid_move?(index)
+      move(index,current_player)
+      display_board
+    else
+      turn
+    end
+  end
+
   def display_board
     puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
     puts "-----------"
