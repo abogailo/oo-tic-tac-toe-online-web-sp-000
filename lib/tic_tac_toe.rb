@@ -32,7 +32,7 @@ class TicTacToe
       @board[index]= char
   end
 
-  def position_taken?(location)
+  def position_taken?(board, index)
     @board[location] != " " && @board[location] != ""
   end
 
