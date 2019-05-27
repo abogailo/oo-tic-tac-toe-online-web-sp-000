@@ -66,25 +66,25 @@ class TicTacToe
     turn_count % 2 == 0 ? "X" : "O"
   end
 
-
-
-
-
-   def current_player
-     turn_count%2==0 ? "X" : "O"
-   end
    def won?
-     odp = WIN_COMBINATIONS.detect do |comb|
-       @board[comb[0]]=="X" && @board[comb[1]]=="X" && @board[comb[2]]=="X" || @board[comb[0]]=="O" && @board[comb[1]]=="O" && @board[comb[2]]=="O"
-         end
-   odp ? odp : false
+      WIN_COMBINATIONS.detect do |win|
+      (@board[win[0]]=="X" && @board[win[1]]=="X" && @board[win[2]]=="X") ||
+      (@board[win[0]]=="O" && @board[win[1]]=="O" && @board[win[2]]=="O")
+      end
+   #odp ? odp : false
    end
+
+   
    def full?
      @board.all?{|slot| slot == "X" || slot == "O"}? true : false
    end
+
+   
    def draw?
      won? ? false : full? ? true : false
    end
+
+   
   def over?
    won? || draw? || full?
  end
