@@ -27,6 +27,9 @@ class TicTacToe
     @board[location] != " " && @board[location] != ""
   end
 
+  def valid_move?(index)
+      index.between?(0,8) && !position_taken?(index)
+  end
   def current_player
     turn_count % 2 == 0 ? "X" : "O"
   end
