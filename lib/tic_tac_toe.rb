@@ -84,14 +84,14 @@ class TicTacToe
   def over?
     draw? || won?
   end
-  
+
  def winner
    if win = won?
      @board[win[0]]
    end
  end
 
- 
+
  def play
    until over?
      turn
