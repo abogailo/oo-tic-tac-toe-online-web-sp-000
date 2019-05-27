@@ -1,3 +1,4 @@
+
 class TicTacToe
 
   WIN_COMBINATIONS = [
@@ -57,7 +58,30 @@ class TicTacToe
     puts "-----------"
     puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
   end
-
+  def turn_count
+     turn_count = 0
+     @board.each do |slot|
+       if slot=="X" || slot=="O"
+         turn_count+=1
+       end
+     end
+     turn_count
+   end
+   def current_player
+     turn_count%2==0 ? "X" : "O"
+   end
+   def won?
+     odp = WIN_COMBINATIONS.detect do |comb|
+       @board[comb[0]]=="X" && @board[comb[1]]=="X" && @board[comb[2]]=="X" || @board[comb[0]]=="O" && @board[comb[1]]=="O" && @board[comb[2]]=="O"
+         end
+   odp ? odp : false
+   end
+   def full?
+     @board.all?{|slot| slot == "X" || slot == "O"}? true : false
+   end
+   def draw?
+     won? ? false : full? ? true : false
+   end
   def over?
    won? || draw? || full?
  end
@@ -78,6 +102,5 @@ class TicTacToe
    elsif draw?
      puts "Cat's Game!"
    end
-
   end
 end
