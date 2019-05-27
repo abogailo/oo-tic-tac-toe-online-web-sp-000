@@ -72,16 +72,14 @@ class TicTacToe
     (@board[win[0]]=="O" && @board[win[1]]=="O" && @board[win[2]]=="O")
     end
   end
+  
+  def full?
+   !(@board.detect {|i| i == " " || i == nil})
+  end
 
-
-   def full?
-     !(@board.detect {|i| i == " " || i == nil})
-   end
-
-
-   def draw?
-     won? ? false : full? ? true : false
-   end
+ def draw?
+   !won?(@board) && full?(@board)
+ end
 
 
   def over?
