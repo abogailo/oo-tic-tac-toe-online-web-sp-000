@@ -77,22 +77,21 @@ class TicTacToe
    !(@board.detect {|i| i == " " || i == nil})
   end
 
- def draw?
+  def draw?
    !won? && full?
- end
-
+  end
 
   def over?
-   won? || draw? || full?
- end
+    draw? || won?
+  end
+  
  def winner
-   win = won?
-   if(!win)
-     nil
-   else
+   if win = won?
      @board[win[0]]
    end
  end
+
+ 
  def play
    until over?
      turn
